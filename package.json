@@ -1,12 +1,14 @@
 {
-  "name": "@http-pro/validator",
-  "version": "0.0.1",
-  "description": "Yup, Zod and Valibot validator function",
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+	"name": "@http-pro/validator",
+	"version": "0.0.1",
+	"description": "Yup, Zod and Valibot validator function",
+	"main": "index.js",
+	"devDependencies": {
+		"typescript": "^4.3.4"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC"
 }
