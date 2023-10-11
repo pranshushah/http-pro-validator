@@ -5,14 +5,18 @@ export async function validateZodSchema<TSchema extends ZodSchema>(
   options: Partial<ParseParams> = {}
 ) {
   return (
-    schema: TSchema,
     data: any,
-    validationOptions: HValidationOptions = { mode: 'async', raw: true }
+    validationOptions: HValidationOptions = { mode: 'async', raw: true },
+    schema?: TSchema
   ) => {
-    const parsedValue = schema.parse(data, {
-      async: validationOptions.mode === 'async' ? true : false,
-      ...options,
-    });
-    return validationOptions.raw ? data : parsedValue;
+    if (schema) {
+      const parsedValue = schema.parse(data, {
+        async: validationOptions.mode === 'async' ? true : false,
+        ...options,
+      });
+      return validationOptions.raw ? data : parsedValue;
+    } else {
+      return data;
+    }
   };
 }
