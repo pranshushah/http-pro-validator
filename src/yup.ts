@@ -1,10 +1,20 @@
 import { Schema } from 'yup';
+import { HValidationOptions } from './types';
 
 export async function validateYupSchema<TSchema extends Schema>(
-  schema: TSchema,
   options: Parameters<TSchema['validate']>[1] = {}
 ) {
-  return (data: any) => {
-    return schema.validateSync(data, { abortEarly: false, ...options });
+  return (
+    schema: TSchema,
+    data: any,
+    validationOptions: HValidationOptions = { mode: 'async', raw: true }
+  ) => {
+    const parsedValue = schema[
+      validationOptions.mode === 'async' ? 'validate' : 'validateSync'
+    ](data, {
+      abortEarly: false,
+      ...options,
+    });
+    return validationOptions.raw ? data : parsedValue;
   };
 }

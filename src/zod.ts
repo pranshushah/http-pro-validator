@@ -1,10 +1,18 @@
 import { ParseParams, ZodSchema } from 'zod';
+import { HValidationOptions } from './types';
 
 export async function validateZodSchema<TSchema extends ZodSchema>(
-  schema: TSchema,
   options: Partial<ParseParams> = {}
 ) {
-  return (data: any) => {
-    return schema.parse(data, { async: false, ...options });
+  return (
+    schema: TSchema,
+    data: any,
+    validationOptions: HValidationOptions = { mode: 'async', raw: true }
+  ) => {
+    const parsedValue = schema.parse(data, {
+      async: validationOptions.mode === 'async' ? true : false,
+      ...options,
+    });
+    return validationOptions.raw ? data : parsedValue;
   };
 }
