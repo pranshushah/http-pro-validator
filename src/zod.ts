@@ -10,10 +10,16 @@ export function validateZodSchema<TSchema extends ZodSchema>(
     schema?: TSchema
   ): Promise<ResponseType> => {
     if (schema) {
-      const parsedValue = schema.parse(data, {
-        async: validationOptions.mode === 'async' ? true : false,
-        ...options,
-      });
+      let parsedValue: ResponseType;
+      if (validationOptions.mode === 'async') {
+        parsedValue = await schema.parseAsync(data, {
+          ...options,
+        });
+      } else {
+        parsedValue = schema.parse(data, {
+          ...options,
+        });
+      }
       return validationOptions.raw ? data : parsedValue;
     } else {
       return data;
