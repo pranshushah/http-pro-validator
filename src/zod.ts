@@ -14,10 +14,12 @@ export function validateZodSchema<TSchema extends ZodSchema>(
       if (validationOptions.mode === 'async') {
         parsedValue = await schema.parseAsync(data, {
           ...options,
+          async: true,
         });
       } else {
         parsedValue = schema.parse(data, {
           ...options,
+          async: false,
         });
       }
       return validationOptions.raw ? data : parsedValue;
