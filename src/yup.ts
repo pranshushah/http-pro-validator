@@ -10,7 +10,7 @@ export function validateYupSchema<TSchema extends Schema>(
     schema?: TSchema
   ): Promise<ResponseType> => {
     if (schema) {
-      const parsedValue = schema[
+      const parsedValue = await schema[
         validationOptions.mode === 'async' ? 'validate' : 'validateSync'
       ](data, {
         abortEarly: false,
