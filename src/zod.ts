@@ -6,8 +6,8 @@ export function validateZodSchema<TSchema extends ZodSchema>(
 ) {
   return async <ResponseType extends any = any>(
     data: ResponseType,
-    validationOptions: HValidationOptions = { mode: 'async', raw: true },
-    schema?: TSchema
+    schema?: TSchema,
+    validationOptions: HValidationOptions = defaultValidationOptions
   ): Promise<ResponseType> => {
     if (schema) {
       let parsedValue: ResponseType;

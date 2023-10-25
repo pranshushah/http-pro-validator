@@ -6,7 +6,7 @@ export function validateYupSchema<TSchema extends AnyObjectSchema>(
 ) {
   return async <ResponseType extends any = any>(
     data: ResponseType,
-    validationOptions: HValidationOptions = { mode: 'async', raw: true },
+    validationOptions: HValidationOptions = defaultValidationOptions,
     schema?: TSchema
   ): Promise<ResponseType> => {
     if (schema) {
