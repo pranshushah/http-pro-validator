@@ -1,8 +1,8 @@
-import * as Z from 'zod';
+import { ZodSchema, ParseParams } from 'zod';
 import { HValidationOptions } from './types';
 
-export function validateZodSchema<TSchema extends Z.ZodSchema>(
-  options: Partial<Z.ParseParams> = {}
+export function validateZodSchema<TSchema extends ZodSchema>(
+  options: Partial<ParseParams> = {}
 ) {
   return async <ResponseType extends any = any>(
     data: ResponseType,
