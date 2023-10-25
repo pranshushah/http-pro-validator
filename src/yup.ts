@@ -1,8 +1,8 @@
-import * as Yup from 'yup';
+import { AnyObjectSchema } from 'yup';
 import { HValidationOptions } from './types';
 
-export function validateYupSchema<TSchema extends Yup.Schema>(
-  options: Parameters<TSchema['validate']>[1] = {}
+export function validateYupSchema<TSchema extends AnyObjectSchema>(
+  options: Parameters<AnyObjectSchema['validate']>[1] = {}
 ) {
   return async <ResponseType extends any = any>(
     data: ResponseType,
