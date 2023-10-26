@@ -6,6 +6,7 @@
     "@size-limit/preset-small-lib": "^7.0.8",
     "@types/jest": "^29.5.5",
     "@types/yup": "^0.32.0",
+    "http-pro": "0.6.0",
     "jest": "^29.7.0",
     "size-limit": "^7.0.8",
     "ts-jest": "^29.1.1",

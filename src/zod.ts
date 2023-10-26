@@ -1,12 +1,13 @@
 import { ZodSchema, ParseParams } from 'zod';
-import { HValidationOptions } from './types';
+import { HPValidationOptions } from 'http-pro';
+import { defaultValidationOptions } from './constants';
 
 export function validateZodSchema<TSchema extends ZodSchema>(
   options: Partial<ParseParams> = {}
 ) {
   return async <ResponseType extends any = any>(
     data: ResponseType,
-    validationOptions: HValidationOptions = { mode: 'async', raw: true },
+    validationOptions: HPValidationOptions = defaultValidationOptions,
     schema?: TSchema
   ): Promise<ResponseType> => {
     if (schema) {
