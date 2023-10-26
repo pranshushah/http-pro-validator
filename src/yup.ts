@@ -1,5 +1,6 @@
 import { AnyObjectSchema } from 'yup';
 import { HValidationOptions } from './types';
+import { defaultValidationOptions } from './constants';
 
 export function validateYupSchema<TSchema extends AnyObjectSchema>(
   options: Parameters<AnyObjectSchema['validate']>[1] = {}

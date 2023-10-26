@@ -1,5 +1,6 @@
 import { ZodSchema, ParseParams } from 'zod';
 import { HValidationOptions } from './types';
+import { defaultValidationOptions } from './constants';
 
 export function validateZodSchema<TSchema extends ZodSchema>(
   options: Partial<ParseParams> = {}
